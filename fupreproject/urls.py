@@ -19,6 +19,7 @@ from accounts import views
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.HomePage, name='home'),
@@ -27,4 +28,14 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+
+            # Autenticate 3rd party
+    path('profile/login/', auth_views.LoginView.as_view(), name='login'),
+    path('profile/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('profile/password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('profile/password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('profile/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('profile/reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -48,8 +48,8 @@
               <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
               <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
               <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
-              <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
-              <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+              <li><a style="color:black;" href="{% url 'password_reset' %}">Change Password</a></li>
+              <li><a style="color:black;" href="{% url 'logout' %}">Log out</a></li>
             </ul>
           </nav>
           <!-- /Navigation -->
@@ -74,7 +74,7 @@
             <div class="col-md-6">
               <h3 style="color:#C00;" >Welcome, {{ user.full_name|upper }}</h3>
               <div class="">
-                <strong style="color:black;">Matric No:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.matric_no}} </strong>
+                <strong style="color:black;">Matric No:  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.matric_number}} </strong>
               </div>
               <p></p>
               <div class="">

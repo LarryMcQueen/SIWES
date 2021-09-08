@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -85,7 +85,7 @@
               <li><a style="color:black;" href="{% url 'home' %}">Home</a></li>
               <li><a style="color:black;" href="{% url 'about' %}">About</a></li>
               <li><a style="color:black;" href="{% url 'contact' %}">Contact</a></li>
-              <li><a style="color:black;" href="{% url 'accounts:user_login' %}">Login</a></li>
+              <li><a style="color:black;" href="{% url 'login' %}">Login</a></li>
               <li><a style="color:black;" href="{% url 'accounts:register' %}">Register</a></li>
             </ul>
           </nav>
@@ -187,7 +187,6 @@
                   the 2019/2020 session is to hold on Wednesday 15th May 2021 by 10am at Lecture Theatre 1. All stakeholders
                     are advised to attend.</p>
         </div>
-        {% endif %}
       </div>
       <br><br>
 

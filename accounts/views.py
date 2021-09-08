@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from accounts.forms import RegisterForm, EditSiwesForm, EditProfileForm
+from accounts.forms import RegisterForm, EditSiwesForm, EditProfileForm, User
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
@@ -9,26 +9,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
-
-def user_login(request):
-    context = {}
-    if request.method == 'POST':
-        matric_no = request.POST['matric_no']
-        a = matric_no.upper()
-        password = request.POST['password']
-        user = authenticate(request, matric_no=a, password=password)
-
-        if user:
-            # correct username and password login the user
-            login(request, user)
-            return HttpResponseRedirect(reverse('accounts:view_profile'))
-        else:
-            context['error'] = "Provide Valid Credentials !!"
-            return render(request, 'accounts/login.html', context)
-
-    else:
-        return render(request, 'accounts/login.html', context)
-
+from django.views.generic import CreateView, ListView, UpdateView
 
 def register(request):
     if request.method == 'POST':
@@ -41,18 +22,19 @@ def register(request):
         form = RegisterForm()
 
     args = {'form': form}
-    return render(request, 'accounts/reg_form.html', args)
+    return render(request, 'registration/signup.html', args)
 
 
 
-def user_logout(request):
-    if request.method == "POST":
-        logout(request)
-    else:
-        logout(request)
-        return HttpResponseRedirect(reverse('accounts:user_login'))
+class StudentSignUpView(CreateView):
+    model = User
+    form_class = RegisterForm
+    template_name = 'registration/signup.html'
 
-
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('login')
 
 @login_required
 def view_profile(request):

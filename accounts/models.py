@@ -107,6 +107,7 @@ class User(AbstractBaseUser):
     staff       = models.BooleanField(default=False)
     admin       = models.BooleanField(default=False)
     timestamp   = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="image",max_length=100)
 
 
     USERNAME_FIELD = 'matric_number'

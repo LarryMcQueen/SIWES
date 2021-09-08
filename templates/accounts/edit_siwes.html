@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 {% load crispy_forms_tags %}
 <html lang="en" dir="ltr">
   <head>
@@ -77,8 +77,8 @@
               <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
               <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
               <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
-              <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
-              <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+              <li><a style="color:black;" href="{% url 'password_reset' %}">Change Password</a></li>
+              <li><a style="color:black;" href="{% url 'logout' %}">Log out</a></li>
             </ul>
           </nav>
           <!-- /Navigation -->

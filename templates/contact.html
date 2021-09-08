@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load crispy_forms_tags %}
-{% load staticfiles %}
+{% load static%}
 
 <html lang="en" dir="ltr">
   <head>
@@ -50,15 +50,15 @@
                   <li><a style="color:black;"href="{% url 'accounts:view_profile' %}">Dashboard</a></li>
                   <!-- <li><a href="/accounts/profile/edit">Edit Profile</a></li> -->
                   <li><a style="color:black;" href="{% url 'accounts:edit_details' %}">Siwes Info</a></li>
-                  <li><a style="color:black;" href="{% url 'accounts:change_password' %}">Change Password</a></li>
-                  <li><a style="color:black;" href="{% url 'accounts:user_logout' %}">Log out</a></li>
+                  <li><a style="color:black;" href="{% url 'change_password' %}">Change Password</a></li>
+                  <li><a style="color:black;" href="{% url 'logout' %}">Log out</a></li>
                 </ul>
                 {% else %}
                 <ul class="main-menu nav navbar-nav navbar-right">
                   <li><a style="color:black;" href="{% url 'home' %}">Home</a></li>
                   <li><a style="color:black;" href="{% url 'about' %}">About</a></li>
                   <li><a style="color:black;" href="{% url 'contact' %}">Contact</a></li>
-                  <li><a style="color:black;" href="{% url 'accounts:user_login' %}">Login</a></li>
+                  <li><a style="color:black;" href="{% url 'login' %}Login</a></li>
                   <li><a style="color:black;" href="{% url 'accounts:register' %}">Register</a></li>
                 </ul>
                 {% endif%}
